@@ -1,0 +1,4 @@
+.agents/
+.claude/
+.tmp_*
+.sync-git/
