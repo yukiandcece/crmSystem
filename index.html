@@ -169,6 +169,20 @@
             gap: 12px;
         }
 
+        #page-dashboard {
+            position: relative;
+            padding-top: 54px;
+        }
+
+        #page-dashboard .header-actions {
+            position: absolute;
+            top: 0;
+            right: 0;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 0 !important;
+        }
+
         .btn {
             padding: 10px 20px;
             border: none;
@@ -317,6 +331,84 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 4px;
+        }
+
+        .quick-entry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .quick-entry-card {
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .quick-entry-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(47, 99, 162, 0.35);
+        }
+
+        .quick-entry-main {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .quick-entry-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .quick-entry-icon.add {
+            background-color: rgba(0, 184, 148, 0.12);
+            color: var(--success-color);
+        }
+
+        .quick-entry-icon.follow {
+            background-color: rgba(204, 138, 0, 0.12);
+            color: var(--warning-color);
+        }
+
+        .quick-entry-icon.settings {
+            background-color: rgba(47, 99, 162, 0.1);
+            color: var(--primary-color);
+        }
+
+        .quick-entry-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .quick-entry-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .quick-entry-arrow {
+            color: var(--text-secondary);
+            font-size: 18px;
+            flex-shrink: 0;
         }
 
         .stat-content p {
@@ -823,6 +915,21 @@
             #page-create-customer div[style*="grid-template-columns: repeat(2, 1fr)"] {
                 grid-template-columns: 1fr !important;
             }
+
+            #page-dashboard {
+                padding-top: 0;
+            }
+
+            #page-dashboard .header-actions {
+                position: static;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                margin-bottom: 20px !important;
+            }
+
+            .quick-entry-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* 模态框 */
@@ -1125,10 +1232,6 @@
                     <span>📅</span>
                     <span id="current-date"></span>
                 </button>
-                    <button class="btn btn-primary" onclick="showHomePageSettingsModal()">
-                        <span>⚙️</span>
-                        设置首页
-                    </button>
                     <button class="btn btn-primary" onclick="refreshDashboard()">
                         <span>🔄</span>
                         刷新数据
@@ -1172,6 +1275,40 @@
                         <p>待跟进客户</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- 快捷入口 -->
+            <div class="quick-entry-grid">
+                <button type="button" class="quick-entry-card" onclick="openQuickCreateCustomer()">
+                    <div class="quick-entry-main">
+                        <div class="quick-entry-icon add">➕</div>
+                        <div>
+                            <div class="quick-entry-title">快捷新增客户</div>
+                            <div class="quick-entry-subtitle">创建新的客户资源</div>
+                        </div>
+                    </div>
+                    <span class="quick-entry-arrow">›</span>
+                </button>
+                <button type="button" class="quick-entry-card" onclick="openTodayFollowUps()">
+                    <div class="quick-entry-main">
+                        <div class="quick-entry-icon follow">⏰</div>
+                        <div>
+                            <div class="quick-entry-title">今日待跟进</div>
+                            <div class="quick-entry-subtitle"><span id="today-follow-count">0</span> 位客户待处理</div>
+                        </div>
+                    </div>
+                    <span class="quick-entry-arrow">›</span>
+                </button>
+                <button type="button" class="quick-entry-card" onclick="showHomePageSettingsModal()">
+                    <div class="quick-entry-main">
+                        <div class="quick-entry-icon settings">⚙️</div>
+                        <div>
+                            <div class="quick-entry-title">设置首页</div>
+                            <div class="quick-entry-subtitle">调整首页展示内容</div>
+                        </div>
+                    </div>
+                    <span class="quick-entry-arrow">›</span>
+                </button>
             </div>
 
             <div class="two-column-layout">
@@ -2473,6 +2610,16 @@
             <div class="card">
                 <div class="filter-bar">
                     <div class="filter-item">
+                        <label>学期</label>
+                        <select id="product-filter-semester" onchange="applyProductFilters()">
+                            <option value="">全部</option>
+                            <option value="2025-2026学年暑假">2025-2026学年暑假</option>
+                            <option value="2025-2026学年寒假">2025-2026学年寒假</option>
+                            <option value="25暑">25暑</option>
+                            <option value="25寒">25寒</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
                         <label>国内/国际</label>
                         <select id="product-filter-type" onchange="applyProductFilters()">
                             <option value="">全部</option>
@@ -2481,13 +2628,12 @@
                         </select>
                     </div>
                     <div class="filter-item">
-                        <label>学年</label>
-                        <select id="product-filter-semester" onchange="applyProductFilters()">
+                        <label>授课机构</label>
+                        <select id="product-filter-institution" onchange="applyProductFilters()">
                             <option value="">全部</option>
-                            <option value="2025-2026学年暑假">2025-2026学年暑假</option>
-                            <option value="2025-2026学年寒假">2025-2026学年寒假</option>
-                            <option value="25暑">25暑</option>
-                            <option value="25寒">25寒</option>
+                            <option value="万泽">万泽</option>
+                            <option value="岭途">岭途</option>
+                            <option value="嘉毅">嘉毅</option>
                         </select>
                     </div>
                     <div class="filter-item">
@@ -3717,6 +3863,7 @@
         function applyProductFilters() {
             const typeFilter = document.getElementById('product-filter-type').value;
             const semesterFilter = document.getElementById('product-filter-semester').value;
+            const institutionFilter = document.getElementById('product-filter-institution').value;
             const remainingFilter = document.getElementById('product-filter-remaining').value;
             const searchText = document.getElementById('product-search-input').value.toLowerCase();
 
@@ -3726,6 +3873,9 @@
 
                 // 学期筛选
                 if (semesterFilter && product.semester !== semesterFilter) return false;
+
+                // 授课机构筛选
+                if (institutionFilter && !(product.institution || '岭途').split('、').includes(institutionFilter)) return false;
 
                 // 剩余名额筛选
                 if (remainingFilter) {
@@ -3750,6 +3900,7 @@
         function resetProductFilters() {
             document.getElementById('product-filter-type').value = '';
             document.getElementById('product-filter-semester').value = '';
+            document.getElementById('product-filter-institution').value = '';
             document.getElementById('product-filter-remaining').value = '';
             document.getElementById('product-search-input').value = '';
             productCurrentPage = 1;
@@ -5609,11 +5760,42 @@
             switchPage('resources');
         }
 
+        function getTodayDateString() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${now.getFullYear()}-${month}-${day}`;
+        }
+
+        function getTodayFollowUpResources() {
+            const today = getTodayDateString();
+            return mockData.resources.filter(resource => resource.nextFollowTime && resource.nextFollowTime <= today);
+        }
+
+        function updateQuickEntries() {
+            const todayFollowCount = document.getElementById('today-follow-count');
+            if (todayFollowCount) {
+                todayFollowCount.textContent = getTodayFollowUpResources().length;
+            }
+        }
+
+        function openQuickCreateCustomer() {
+            switchPage('create-customer');
+        }
+
+        function openTodayFollowUps() {
+            currentResources = getTodayFollowUpResources();
+            currentPage = 1;
+            switchPage('resources');
+            loadResources();
+        }
+
         // 加载面板数据
         function loadDashboard() {
             // 设置当前日期
             const now = new Date();
             document.getElementById('current-date').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+            updateQuickEntries();
 
             // 根据选择的类型过滤产品数据
             let filteredProducts;
