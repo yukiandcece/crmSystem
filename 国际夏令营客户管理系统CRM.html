@@ -1464,19 +1464,6 @@
                             </select>
                         </div>
                         <div class="filter-item">
-                            <label>缴费营地</label>
-                            <select id="filter-paid-camp">
-                                <option value="">全部</option>
-                                <option value="港澳-国际营7月4-9日">港澳-国际营7月4-9日</option>
-                                <option value="欧洲-国际营7月20-31日">欧洲-国际营7月20-31日</option>
-                                <option value="英国-国际营7月11-22日">英国-国际营7月11-22日</option>
-                                <option value="马来西亚-国际营7月4-9日">马来西亚-国际营7月4-9日</option>
-                                <option value="西班牙-国际营7月8-19日">西班牙-国际营7月8-19日</option>
-                                <option value="篮球训练营">篮球训练营</option>
-                                <option value="北京夏令营">北京夏令营</option>
-                            </select>
-                        </div>
-                        <div class="filter-item">
                             <label>缴费营地(课程名称)</label>
                             <select id="filter-paid-camp" onchange="updatePaidCampPeriodOptions()">
                                 <option value="">全部</option>
@@ -1489,6 +1476,19 @@
                                 <option value="北京夏令营">北京夏令营</option>
                                 <option value="游泳训练营">游泳训练营</option>
                                 <option value="魔法料理学院营">魔法料理学院营</option>
+                                <option value="嘉祥X表达新青年思辨与表达特训营">嘉祥X表达新青年思辨与表达特训营</option>
+                                <option value="山西夏令营">山西夏令营</option>
+                                <option value="张家界恩施夏令营">张家界恩施夏令营</option>
+                                <option value="宁夏夏令营">宁夏夏令营</option>
+                                <option value="射击集训营">射击集训营</option>
+                                <option value="棍网球中外教备赛营">棍网球中外教备赛营</option>
+                                <option value="棍网球兴趣营">棍网球兴趣营</option>
+                                <option value="棍网球全国集训营">棍网球全国集训营</option>
+                                <option value="棍网球校队备赛营">棍网球校队备赛营</option>
+                                <option value="魔幻学院微短剧影视营">魔幻学院微短剧影视营</option>
+                                <option value="极客学院5极客行动">极客学院5极客行动</option>
+                                <option value="青岛威海夏令营">青岛威海夏令营</option>
+                                <option value="南京上海夏令营">南京上海夏令营</option>
                             </select>
                         </div>
                         <div class="filter-item">
@@ -1576,6 +1576,7 @@
                                 <th style="padding: 12px; white-space: nowrap;">缴费状态</th>
                                 <th style="padding: 12px; white-space: nowrap;">实缴金额</th>
                                 <th style="padding: 12px; white-space: nowrap;">缴费时间</th>
+                                <th style="padding: 12px; white-space: nowrap;">操作历史</th>
                                 <th style="padding: 12px; white-space: nowrap;">操作</th>
                             </tr>
                         </thead>
@@ -2528,34 +2529,32 @@
 
             <!-- 产品列表表格 -->
             <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">产品列表</h3>
-                        <p class="card-subtitle">查看所有夏令营产品的报名情况</p>
-                    </div>
-                </div>
                 <div class="table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th>产品ID</th>
-                                <th>产品名称</th>
-                                <th>国际/国内</th>
+                                <th>ID</th>
                                 <th>学期</th>
+                                <th>国际/国内</th>
+                                <th>授课机构</th>
+                                <th>营地名称</th>
+                                <th>营期名称</th>
                                 <th>满营人数</th>
                                 <th>已报名人数</th>
                                 <th>剩余名额</th>
                                 <th>报名进度</th>
-                                <th>状态</th>
+                                <th>操作历史</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody id="product-list-body">
                             <tr>
                                 <td>1</td>
-                                <td>马来西亚-国际营7月4-9日</td>
-                                <td><span class="tag tag-info">国际</span></td>
                                 <td>2025-2026学年暑假</td>
+                                <td><span class="tag tag-info">国际</span></td>
+                                <td>岭途</td>
+                                <td>马来西亚-国际营</td>
+                                <td>马来西亚-国际营7月4-9日</td>
                                 <td>30</td>
                                 <td>0</td>
                                 <td><span class="tag tag-success">30</span></td>
@@ -2565,19 +2564,21 @@
                                     </div>
                                     <small style="color: var(--text-secondary);">0%</small>
                                 </td>
-                                <td><span class="tag tag-secondary">未开始</span></td>
+                                <td><button class="action-btn action-btn-view" onclick="showProductHistory(1)">查看</button></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="action-btn action-btn-view">查看</button>
-                                        <button class="action-btn action-btn-edit">编辑</button>
+                                        <button class="action-btn action-btn-delete" onclick="deleteProduct(1)">删除</button>
+                                        <button class="action-btn action-btn-edit" onclick="editProduct(1)">编辑</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>港澳-国际营7月4-9日</td>
-                                <td><span class="tag tag-info">国际</span></td>
                                 <td>2025-2026学年暑假</td>
+                                <td><span class="tag tag-info">国际</span></td>
+                                <td>岭途</td>
+                                <td>港澳-国际营</td>
+                                <td>港澳-国际营7月4-9日</td>
                                 <td>30</td>
                                 <td>29</td>
                                 <td><span class="tag tag-danger">1</span></td>
@@ -2587,19 +2588,21 @@
                                     </div>
                                     <small style="color: var(--text-secondary);">97%</small>
                                 </td>
-                                <td><span class="tag tag-danger">即将满营</span></td>
+                                <td><button class="action-btn action-btn-view" onclick="showProductHistory(2)">查看</button></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="action-btn action-btn-view">查看</button>
-                                        <button class="action-btn action-btn-edit">编辑</button>
+                                        <button class="action-btn action-btn-delete" onclick="deleteProduct(2)">删除</button>
+                                        <button class="action-btn action-btn-edit" onclick="editProduct(2)">编辑</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>西班牙-国际营7月8-19日</td>
-                                <td><span class="tag tag-info">国际</span></td>
                                 <td>2025-2026学年暑假</td>
+                                <td><span class="tag tag-info">国际</span></td>
+                                <td>岭途</td>
+                                <td>西班牙-国际营</td>
+                                <td>西班牙-国际营7月8-19日</td>
                                 <td>30</td>
                                 <td>0</td>
                                 <td><span class="tag tag-success">30</span></td>
@@ -2609,19 +2612,21 @@
                                     </div>
                                     <small style="color: var(--text-secondary);">0%</small>
                                 </td>
-                                <td><span class="tag tag-secondary">未开始</span></td>
+                                <td><button class="action-btn action-btn-view" onclick="showProductHistory(3)">查看</button></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="action-btn action-btn-view">查看</button>
-                                        <button class="action-btn action-btn-edit">编辑</button>
+                                        <button class="action-btn action-btn-delete" onclick="deleteProduct(3)">删除</button>
+                                        <button class="action-btn action-btn-edit" onclick="editProduct(3)">编辑</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>欧洲-国际营7月20-31日</td>
-                                <td><span class="tag tag-info">国际</span></td>
                                 <td>2025-2026学年暑假</td>
+                                <td><span class="tag tag-info">国际</span></td>
+                                <td>岭途</td>
+                                <td>欧洲-国际营</td>
+                                <td>欧洲-国际营7月20-31日</td>
                                 <td>30</td>
                                 <td>12</td>
                                 <td><span class="tag tag-warning">18</span></td>
@@ -2631,19 +2636,21 @@
                                     </div>
                                     <small style="color: var(--text-secondary);">40%</small>
                                 </td>
-                                <td><span class="tag tag-info">报名中</span></td>
+                                <td><button class="action-btn action-btn-view" onclick="showProductHistory(4)">查看</button></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="action-btn action-btn-view">查看</button>
-                                        <button class="action-btn action-btn-edit">编辑</button>
+                                        <button class="action-btn action-btn-delete" onclick="deleteProduct(4)">删除</button>
+                                        <button class="action-btn action-btn-edit" onclick="editProduct(4)">编辑</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>英国-国际营7月11-22日</td>
-                                <td><span class="tag tag-info">国际</span></td>
                                 <td>2025-2026学年暑假</td>
+                                <td><span class="tag tag-info">国际</span></td>
+                                <td>岭途</td>
+                                <td>英国-国际营</td>
+                                <td>英国-国际营7月11-22日</td>
                                 <td>30</td>
                                 <td>18</td>
                                 <td><span class="tag tag-warning">12</span></td>
@@ -2653,17 +2660,110 @@
                                     </div>
                                     <small style="color: var(--text-secondary);">60%</small>
                                 </td>
-                                <td><span class="tag tag-info">报名中</span></td>
+                                <td><button class="action-btn action-btn-view" onclick="showProductHistory(5)">查看</button></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="action-btn action-btn-view">查看</button>
-                                        <button class="action-btn action-btn-edit">编辑</button>
+                                        <button class="action-btn action-btn-delete" onclick="deleteProduct(5)">删除</button>
+                                        <button class="action-btn action-btn-edit" onclick="editProduct(5)">编辑</button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="pagination">
+                    <button onclick="prevProductPage()" id="product-prev-btn">上一页</button>
+                    <span class="pagination-info">第 <span id="product-current-page">1</span> / <span id="product-total-pages">1</span> 页</span>
+                    <button onclick="nextProductPage()" id="product-next-btn">下一页</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 添加产品 -->
+        <div class="page" id="page-add-product">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title" id="product-form-title">添加产品</h3>
+                    </div>
+                </div>
+                <form id="add-product-form">
+                    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px;">
+                        <div class="form-group">
+                            <label>学期</label>
+                            <select name="semester" required>
+                                <option value="2025-2026学年暑假">2025-2026学年暑假</option>
+                                <option value="2025-2026学年寒假">2025-2026学年寒假</option>
+                                <option value="25暑">25暑</option>
+                                <option value="25寒">25寒</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>国际/国内</label>
+                            <select name="type" required>
+                                <option value="国际">国际</option>
+                                <option value="国内">国内</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>授课机构</label>
+                            <select id="add-product-institution" name="institution">
+                                <option value="">请选择授课机构</option>
+                                <option value="万泽">万泽</option>
+                                <option value="岭途">岭途</option>
+                                <option value="嘉毅">嘉毅</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>营地名称</label>
+                            <input type="text" name="campName" placeholder="例如：马来西亚-国际营" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+                            <h3 class="card-title" style="font-size: 16px;">营期信息</h3>
+                            <button type="button" class="btn btn-primary" onclick="addProductPeriodRow()">
+                                <span>➕</span>
+                                添加营期
+                            </button>
+                        </div>
+                        <div id="add-product-periods">
+                            <div class="card product-period-row" style="margin-bottom: 12px; box-shadow: none;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 12px; align-items: end;">
+                                    <div class="form-group" style="margin: 0;">
+                                        <label>营期名称</label>
+                                        <input type="text" name="periodName[]" placeholder="例如：马来西亚-国际营7月4-9日" required>
+                                    </div>
+                                    <div class="form-group" style="margin: 0;">
+                                        <label>满营人数</label>
+                                        <input type="number" name="capacity[]" min="0" value="30" oninput="syncProductPeriodMetrics(this)" required>
+                                    </div>
+                                    <div class="form-group" style="margin: 0;">
+                                        <label>已报名人数</label>
+                                        <input type="number" name="enrolled[]" min="0" value="0" oninput="syncProductPeriodMetrics(this)" required>
+                                    </div>
+                                    <div class="form-group" style="margin: 0;">
+                                        <label>剩余名额</label>
+                                        <input type="number" name="remaining[]" min="0" value="30" readonly>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" onclick="removeProductPeriodRow(this)" title="删除营期" aria-label="删除营期" style="padding: 0; font-size: 16px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">✕</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 24px; padding: 20px 0; display: flex; justify-content: center; gap: 12px;">
+                        <button type="button" class="btn btn-secondary" onclick="switchPage('product')">
+                            <span>←</span>
+                            返回
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="saveProduct()">
+                            <span>💾</span>
+                            <span id="product-form-submit-text">保存产品</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -3359,13 +3459,39 @@
     </div>
 
     <!-- 客户历史订单弹窗 -->
-    <div class="modal" id="customer-orders-modal">
-        <div class="modal-content" style="max-width: 1400px; width: 95vw;">
+    <div class="modal" id="customer-orders-modal" style="align-items: center; padding: 20px 16px;">
+        <div class="modal-content" style="max-width: 90vw; width: 90vw; height: 66vh; max-height: 66vh;">
             <div class="modal-header">
                 <h3 class="modal-title" id="customer-orders-title">历史订单</h3>
                 <button class="modal-close" onclick="closeCustomerOrdersModal()">×</button>
             </div>
-            <div id="customer-orders-body" style="max-height: 92vh; overflow-y: auto;">
+            <div id="customer-orders-body" style="height: calc(66vh - 84px); overflow-y: auto;">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 产品操作历史弹窗 -->
+    <div class="modal" id="product-history-modal">
+        <div class="modal-content" style="max-width: 900px; width: 90vw;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="product-history-title">操作历史</h3>
+                <button class="modal-close" onclick="closeProductHistoryModal()">×</button>
+            </div>
+            <div id="product-history-body" style="max-height: 70vh; overflow-y: auto;">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 客户操作历史弹窗 -->
+    <div class="modal" id="customer-history-modal">
+        <div class="modal-content" style="max-width: 900px; width: 90vw;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="customer-history-title">操作历史</h3>
+                <button class="modal-close" onclick="closeCustomerHistoryModal()">×</button>
+            </div>
+            <div id="customer-history-body" style="max-height: 70vh; overflow-y: auto;">
                 <!-- 动态加载 -->
             </div>
         </div>
@@ -3537,22 +3663,35 @@
                 case 'create-customer':
                     // 创建客户页面不需要加载数据
                     break;
+                case 'add-product':
+                    // 添加产品页面由按钮进入时初始化
+                    break;
             }
         }
 
         // 加载产品管理页面
         function loadProduct() {
-            renderProductTable(productData);
+            currentProductList = productData;
+            productCurrentPage = 1;
+            renderProductTable(currentProductList);
         }
 
         // 产品筛选数据
+        let productCurrentPage = 1;
+        const productPageSize = 10;
+        let currentProductList = [];
+        let editingProductId = null;
+
         const productData = [
             { productId: 1, id: 'malaysia', name: '马来西亚-国际营7月4-9日', type: '国际', semester: '2025-2026学年暑假', capacity: 30, enrolled: 0, remaining: 30, month: '7月', status: '未开始', progress: 0 },
             { productId: 2, id: 'hk-macau', name: '港澳-国际营7月4-9日', type: '国际', semester: '2025-2026学年暑假', capacity: 30, enrolled: 29, remaining: 1, month: '7月', status: '即将满营', progress: 97 },
             { productId: 3, id: 'spain', name: '西班牙-国际营7月8-19日', type: '国际', semester: '2025-2026学年暑假', capacity: 30, enrolled: 0, remaining: 30, month: '7月', status: '未开始', progress: 0 },
             { productId: 4, id: 'europe', name: '欧洲-国际营7月20-31日', type: '国际', semester: '2025-2026学年暑假', capacity: 30, enrolled: 12, remaining: 18, month: '7月', status: '报名中', progress: 40 },
             { productId: 5, id: 'uk', name: '英国-国际营7月11-22日', type: '国际', semester: '2025-2026学年暑假', capacity: 30, enrolled: 18, remaining: 12, month: '7月', status: '报名中', progress: 60 },
-            { productId: 6, id: 'magic-cooking', name: '魔法料理学院营', type: '国内', semester: '2025-2026学年暑假', capacity: 40, enrolled: 22, remaining: 18, month: '7月', status: '报名中', progress: 55 },
+            { productId: 6, id: 'magic-cooking', name: '魔法料理学院营', type: '国内', semester: '2025-2026学年暑假', capacity: 40, enrolled: 22, remaining: 18, month: '7月', status: '报名中', progress: 55, periods: [
+                { periodName: '魔法料理学院营第一期', capacity: 20, enrolled: 12, remaining: 8, progress: 60 },
+                { periodName: '魔法料理学院营第二期', capacity: 20, enrolled: 10, remaining: 10, progress: 50 }
+            ] },
             { productId: 7, id: 'debate-express', name: '嘉祥X表达新青年思辨与表达特训营', type: '国内', semester: '2025-2026学年暑假', capacity: 30, enrolled: 15, remaining: 15, month: '8月', status: '报名中', progress: 50 },
             { productId: 8, id: 'shanxi', name: '山西夏令营', type: '国内', semester: '2025-2026学年暑假', capacity: 40, enrolled: 25, remaining: 15, month: '7月', status: '报名中', progress: 63 },
             { productId: 9, id: 'zhangjiajie', name: '张家界恩施夏令营', type: '国内', semester: '2025-2026学年暑假', capacity: 40, enrolled: 18, remaining: 22, month: '7月', status: '报名中', progress: 45 },
@@ -3602,7 +3741,9 @@
                 return true;
             });
 
-            renderProductTable(filteredProducts);
+            currentProductList = filteredProducts;
+            productCurrentPage = 1;
+            renderProductTable(currentProductList);
         }
 
         // 重置产品筛选
@@ -3611,62 +3752,411 @@
             document.getElementById('product-filter-semester').value = '';
             document.getElementById('product-filter-remaining').value = '';
             document.getElementById('product-search-input').value = '';
+            productCurrentPage = 1;
             applyProductFilters();
         }
 
         // 渲染产品表格
+        function getProductDisplayFields(product) {
+            const name = product.name || '';
+            const internationalMatch = name.match(/^(.+?)-(.+?)(\d+月.+)$/);
+
+            if (internationalMatch) {
+                return {
+                    institution: product.institution || '岭途',
+                    campName: product.campName || `${internationalMatch[1]}-${internationalMatch[2]}`,
+                    periodName: product.periodName || name
+                };
+            }
+
+            return {
+                institution: product.institution || '岭途',
+                campName: product.campName || name,
+                periodName: product.periodName || name
+            };
+        }
+
+        function getProductPeriodRows(product, displayFields) {
+            if (Array.isArray(product.periods) && product.periods.length > 0) {
+                return product.periods.map(period => ({
+                    periodName: period.periodName || displayFields.periodName,
+                    capacity: period.capacity ?? product.capacity,
+                    enrolled: period.enrolled ?? product.enrolled,
+                    remaining: period.remaining ?? product.remaining,
+                    progress: period.progress ?? product.progress
+                }));
+            }
+
+            return [{
+                periodName: displayFields.periodName,
+                capacity: product.capacity,
+                enrolled: product.enrolled,
+                remaining: product.remaining,
+                progress: product.progress
+            }];
+        }
+
         function renderProductTable(products) {
             const tbody = document.getElementById('product-list-body');
+            const totalPages = Math.max(1, Math.ceil(products.length / productPageSize));
+            productCurrentPage = Math.min(productCurrentPage, totalPages);
 
             if (products.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="10" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                        <td colspan="12" style="text-align: center; padding: 40px; color: var(--text-secondary);">
                             <div style="font-size: 48px; margin-bottom: 16px;">🔍</div>
                             <p>未找到符合条件的产品</p>
                         </td>
                     </tr>
                 `;
+                updateProductPagination(products.length);
                 return;
             }
 
-            tbody.innerHTML = products.map(product => {
-                const remainingTagClass = product.remaining <= 1 ? 'tag-danger' :
-                                       product.remaining <= 10 ? 'tag-warning' : 'tag-success';
-                const statusTagClass = product.status === '未开始' ? 'tag-secondary' :
-                                     product.status === '报名中' ? 'tag-info' :
-                                     product.status === '即将满营' ? 'tag-danger' : 'tag-success';
+            const start = (productCurrentPage - 1) * productPageSize;
+            const pageProducts = products.slice(start, start + productPageSize);
 
-                return `
-                    <tr>
-                        <td>${product.productId}</td>
-                        <td>${product.name}</td>
-                        <td><span class="tag tag-info">${product.type}</span></td>
-                        <td>${product.semester}</td>
-                        <td>${product.capacity}</td>
-                        <td>${product.enrolled}</td>
-                        <td><span class="tag ${remainingTagClass}">${product.remaining}</span></td>
-                        <td>
-                            <div class="progress-bar" style="width: 80px;">
-                                <div class="progress-fill" style="width: ${product.progress}%"></div>
-                            </div>
-                            <small style="color: var(--text-secondary);">${product.progress}%</small>
-                        </td>
-                        <td><span class="tag ${statusTagClass}">${product.status}</span></td>
-                        <td>
-                            <div class="action-buttons">
-                                <button class="action-btn action-btn-view">查看</button>
-                                <button class="action-btn action-btn-edit">编辑</button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
+            tbody.innerHTML = pageProducts.map(product => {
+                const displayFields = getProductDisplayFields(product);
+                const periodRows = getProductPeriodRows(product, displayFields);
+
+                return periodRows.map((period, index) => {
+                    const isFirst = index === 0;
+                    const rowspan = periodRows.length;
+                    const rowspanAttr = rowspan > 1 ? ` rowspan="${rowspan}"` : '';
+                    const remainingTagClass = period.remaining <= 1 ? 'tag-danger' :
+                                           period.remaining <= 10 ? 'tag-warning' : 'tag-success';
+
+                    return `
+                        <tr>
+                            ${isFirst ? `<td${rowspanAttr}>${product.productId}</td>` : ''}
+                            ${isFirst ? `<td${rowspanAttr}>${product.semester}</td>` : ''}
+                            ${isFirst ? `<td${rowspanAttr}><span class="tag tag-info">${product.type}</span></td>` : ''}
+                            ${isFirst ? `<td${rowspanAttr}>${displayFields.institution}</td>` : ''}
+                            ${isFirst ? `<td${rowspanAttr}>${displayFields.campName}</td>` : ''}
+                            <td>${period.periodName}</td>
+                            <td>${period.capacity}</td>
+                            <td>${period.enrolled}</td>
+                            <td><span class="tag ${remainingTagClass}">${period.remaining}</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 80px;">
+                                    <div class="progress-fill" style="width: ${period.progress}%"></div>
+                                </div>
+                                <small style="color: var(--text-secondary);">${period.progress}%</small>
+                            </td>
+                            ${isFirst ? `<td${rowspanAttr}><button class="action-btn action-btn-view" onclick="showProductHistory(${product.productId})">查看</button></td>` : ''}
+                            ${isFirst ? `<td${rowspanAttr}>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-delete" onclick="deleteProduct(${product.productId})">删除</button>
+                                    <button class="action-btn action-btn-edit" onclick="editProduct(${product.productId})">编辑</button>
+                                </div>
+                            </td>` : ''}
+                        </tr>
+                    `;
+                }).join('');
             }).join('');
+
+            updateProductPagination(products.length);
         }
 
-        // 显示添加产品模态框
+        function updateProductPagination(totalProducts) {
+            const totalPages = Math.max(1, Math.ceil(totalProducts / productPageSize));
+            const currentPageEl = document.getElementById('product-current-page');
+            const totalPagesEl = document.getElementById('product-total-pages');
+            const prevBtn = document.getElementById('product-prev-btn');
+            const nextBtn = document.getElementById('product-next-btn');
+
+            if (currentPageEl) currentPageEl.textContent = productCurrentPage;
+            if (totalPagesEl) totalPagesEl.textContent = totalPages;
+            if (prevBtn) prevBtn.disabled = productCurrentPage <= 1;
+            if (nextBtn) nextBtn.disabled = productCurrentPage >= totalPages || totalProducts === 0;
+        }
+
+        function prevProductPage() {
+            if (productCurrentPage > 1) {
+                productCurrentPage--;
+                renderProductTable(currentProductList);
+            }
+        }
+
+        function nextProductPage() {
+            const totalPages = Math.max(1, Math.ceil(currentProductList.length / productPageSize));
+            if (productCurrentPage < totalPages) {
+                productCurrentPage++;
+                renderProductTable(currentProductList);
+            }
+        }
+
+        function getProductHistoryRecords(product) {
+            return product.history || [
+                {
+                    date: '2026-07-08 15:00',
+                    image: '系统',
+                    action: '更新产品',
+                    description: `${product.name} 产品信息已更新`
+                },
+                {
+                    date: '2026-07-04 10:30',
+                    image: '管理员',
+                    action: '创建产品',
+                    description: `${product.name} 已创建，初始化满营人数 ${product.capacity} 人`
+                }
+            ];
+        }
+
+        function showProductHistory(productId) {
+            const product = productData.find(item => item.productId === productId);
+            if (!product) {
+                showAppAlert('未找到产品操作历史');
+                return;
+            }
+
+            const title = document.getElementById('product-history-title');
+            const body = document.getElementById('product-history-body');
+            const modal = document.getElementById('product-history-modal');
+            const records = getProductHistoryRecords(product);
+
+            title.textContent = `【${product.name}】操作历史`;
+            body.innerHTML = `
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>形象</th>
+                                <th>操作</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${records.map(record => `
+                                <tr>
+                                    <td>${record.date}</td>
+                                    <td>${record.image}</td>
+                                    <td>${record.action}</td>
+                                    <td>${record.description}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            modal.classList.add('active');
+        }
+
+        function closeProductHistoryModal() {
+            document.getElementById('product-history-modal').classList.remove('active');
+        }
+
+        function deleteProduct(productId) {
+            const product = productData.find(item => item.productId === productId);
+            showAppAlert(`删除产品：${product ? product.name : productId}`);
+        }
+
+        function editProduct(productId) {
+            const product = productData.find(item => item.productId === productId);
+            if (!product) {
+                showAppAlert('未找到要编辑的产品');
+                return;
+            }
+
+            populateProductForm(product);
+            switchPage('add-product');
+        }
+
+        function setProductFormMode(mode) {
+            const title = document.getElementById('product-form-title');
+            const submitText = document.getElementById('product-form-submit-text');
+
+            if (title) title.textContent = mode === 'edit' ? '编辑产品' : '添加产品';
+            if (submitText) submitText.textContent = mode === 'edit' ? '保存修改' : '保存产品';
+        }
+
+        function resetAddProductForm() {
+            const form = document.getElementById('add-product-form');
+            const periods = document.getElementById('add-product-periods');
+            if (!form || !periods) return;
+
+            editingProductId = null;
+            setProductFormMode('add');
+            form.reset();
+            Array.from(form.elements.institution.options).forEach(option => {
+                option.selected = false;
+            });
+            makeSummerFieldMultiSelect(form.elements.institution, 3);
+            updateCustomMultiSelectText(form.elements.institution);
+            periods.innerHTML = createProductPeriodRowHtml();
+        }
+
+        function createProductPeriodRowHtml(period = {}) {
+            const periodName = period.periodName || '';
+            const capacity = period.capacity ?? 30;
+            const enrolled = period.enrolled ?? 0;
+            const remaining = period.remaining ?? Math.max(capacity - enrolled, 0);
+
+            return `
+                <div class="card product-period-row" style="margin-bottom: 12px; box-shadow: none;">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 12px; align-items: end;">
+                        <div class="form-group" style="margin: 0;">
+                            <label>营期名称</label>
+                            <input type="text" name="periodName[]" placeholder="例如：马来西亚-国际营7月4-9日" value="${periodName}" required>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label>满营人数</label>
+                            <input type="number" name="capacity[]" min="0" value="${capacity}" oninput="syncProductPeriodMetrics(this)" required>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label>已报名人数</label>
+                            <input type="number" name="enrolled[]" min="0" value="${enrolled}" oninput="syncProductPeriodMetrics(this)" required>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label>剩余名额</label>
+                            <input type="number" name="remaining[]" min="0" value="${remaining}" readonly>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="removeProductPeriodRow(this)" title="删除营期" aria-label="删除营期" style="padding: 0; font-size: 16px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">✕</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function populateProductForm(product) {
+            const form = document.getElementById('add-product-form');
+            const periods = document.getElementById('add-product-periods');
+            if (!form || !periods) return;
+
+            editingProductId = product.productId;
+            setProductFormMode('edit');
+            form.elements.semester.value = product.semester || '';
+            form.elements.type.value = product.type || '';
+            form.elements.campName.value = product.campName || product.name || '';
+
+            const institutions = String(product.institution || '')
+                .split('、')
+                .map(item => item.trim())
+                .filter(Boolean);
+            Array.from(form.elements.institution.options).forEach(option => {
+                option.selected = institutions.includes(option.value);
+            });
+            makeSummerFieldMultiSelect(form.elements.institution, 3);
+            updateCustomMultiSelectText(form.elements.institution);
+
+            const displayFields = getProductDisplayFields(product);
+            const periodRows = getProductPeriodRows(product, displayFields);
+            periods.innerHTML = periodRows.map(period => createProductPeriodRowHtml(period)).join('');
+        }
+
+        function addProductPeriodRow() {
+            document.getElementById('add-product-periods').insertAdjacentHTML('beforeend', createProductPeriodRowHtml());
+        }
+
+        function removeProductPeriodRow(button) {
+            const periods = document.querySelectorAll('#add-product-periods .product-period-row');
+            if (periods.length <= 1) {
+                showAppAlert('至少保留一条营期信息');
+                return;
+            }
+            button.closest('.product-period-row').remove();
+        }
+
+        function syncProductPeriodMetrics(input) {
+            const row = input.closest('.product-period-row');
+            const capacity = Number(row.querySelector('input[name="capacity[]"]').value || 0);
+            const enrolled = Number(row.querySelector('input[name="enrolled[]"]').value || 0);
+            const remaining = Math.max(capacity - enrolled, 0);
+
+            row.querySelector('input[name="remaining[]"]').value = remaining;
+        }
+
+        function saveProduct() {
+            const form = document.getElementById('add-product-form');
+            const institutions = Array.from(form.elements.institution.selectedOptions)
+                .map(option => option.value)
+                .filter(Boolean);
+
+            if (!institutions.length) {
+                showAppAlert('请选择授课机构');
+                return;
+            }
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const periodRows = Array.from(document.querySelectorAll('#add-product-periods .product-period-row'));
+            const periods = periodRows.map(row => {
+                const capacity = Number(row.querySelector('input[name="capacity[]"]').value || 0);
+                const enrolled = Number(row.querySelector('input[name="enrolled[]"]').value || 0);
+                const remaining = Math.max(capacity - enrolled, 0);
+                const progress = capacity > 0 ? Math.min(Math.round((enrolled / capacity) * 100), 100) : 0;
+
+                return {
+                    periodName: row.querySelector('input[name="periodName[]"]').value.trim(),
+                    capacity,
+                    enrolled,
+                    remaining,
+                    progress
+                };
+            });
+
+            const totalCapacity = periods.reduce((sum, period) => sum + period.capacity, 0);
+            const totalEnrolled = periods.reduce((sum, period) => sum + period.enrolled, 0);
+            const totalRemaining = periods.reduce((sum, period) => sum + period.remaining, 0);
+            const totalProgress = totalCapacity > 0 ? Math.min(Math.round((totalEnrolled / totalCapacity) * 100), 100) : 0;
+            const campName = form.elements.campName.value.trim();
+            const isEditing = editingProductId !== null;
+            const productIndex = isEditing ? productData.findIndex(product => product.productId === editingProductId) : -1;
+            const productId = isEditing ? editingProductId : Math.max(...productData.map(product => product.productId), 0) + 1;
+            const existingProduct = productIndex >= 0 ? productData[productIndex] : null;
+            const historyAction = isEditing ? '编辑产品' : '创建产品';
+            const historyDescription = isEditing
+                ? `${campName} 已更新，共 ${periods.length} 条营期`
+                : `${campName} 已创建，共 ${periods.length} 条营期`;
+            const productPayload = {
+                productId,
+                id: existingProduct?.id || `product-${productId}`,
+                name: campName,
+                type: form.elements.type.value,
+                semester: form.elements.semester.value,
+                institution: institutions.join('、'),
+                campName,
+                periodName: periods[0]?.periodName || campName,
+                capacity: totalCapacity,
+                enrolled: totalEnrolled,
+                remaining: totalRemaining,
+                progress: totalProgress,
+                status: totalEnrolled === 0 ? '未开始' : '报名中',
+                periods,
+                history: [
+                    {
+                        date: new Date().toLocaleString('zh-CN', { hour12: false }),
+                        image: '管理员',
+                        action: historyAction,
+                        description: historyDescription
+                    },
+                    ...(existingProduct?.history || [])
+                ]
+            };
+
+            if (isEditing && productIndex >= 0) {
+                productData[productIndex] = productPayload;
+            } else {
+                productData.push(productPayload);
+            }
+
+            switchPage('product');
+            currentProductList = productData;
+            productCurrentPage = isEditing ? productCurrentPage : Math.ceil(productData.length / productPageSize);
+            renderProductTable(currentProductList);
+            showAppAlert(isEditing ? '产品已更新' : '产品已添加');
+            editingProductId = null;
+        }
+
+        // 进入添加产品页面
         function showAddProductModal() {
-            alert('添加产品功能');
+            resetAddProductForm();
+            switchPage('add-product');
         }
 
         // 显示产品设置模态框
@@ -4430,8 +4920,8 @@
         }
 
         const summerDomesticCampPeriods = [
-            { camp: '魔法料理学院营', period: '7月12日-7月17日（第2期）' },
             { camp: '魔法料理学院营', period: '7月5日-7月10日（第1期）' },
+            { camp: '魔法料理学院营', period: '7月12日-7月17日（第2期）' },
             { camp: '嘉祥X表达新青年思辨与表达特训营', period: '8月2日-6日' },
             { camp: '山西夏令营', period: '7月10日-7月17日' },
             { camp: '张家界恩施夏令营', period: '7月24日-7月30日左右' },
@@ -5249,7 +5739,8 @@
                 const levelTag = r.level ? `<span class="tag tag-${r.level.charAt(0).toLowerCase()}">${r.level}</span>` : '-';
                 const typeTag = r.type ? `<span class="tag ${r.type === '国内' ? 'tag-success' : 'tag-info'}">${r.type}</span>` : '-';
                 const campText = Array.isArray(r.camp) && r.camp.length ? r.camp.join('、') : (r.camp || '-');
-                const campPeriodText = Array.isArray(r.campPeriod) && r.campPeriod.length ? r.campPeriod.join('、') : (r.campPeriod || '-');
+                const campPeriodValues = getCampPeriodValues(r.camp, r.campPeriod);
+                const campPeriodText = campPeriodValues.length ? campPeriodValues.join('、') : '-';
                 const historyBuyText = `${r.historyBuyInt ?? 0}/${r.historyBuyDom ?? 0}`;
 
                 const orders = (Array.isArray(r.orders) && r.orders.length > 0) ? r.orders : [{
@@ -5289,21 +5780,25 @@
 
                 const buildAction = (rowspan) => `
                     <td style="padding: 12px; white-space: nowrap;" ${rowspan > 1 ? `rowspan="${rowspan}"` : ''}>
+                        <button class="action-btn action-btn-view" onclick="showCustomerHistory('${r.name}')">查看</button>
+                    </td>
+                    <td style="padding: 12px; white-space: nowrap;" ${rowspan > 1 ? `rowspan="${rowspan}"` : ''}>
                         <div class="action-buttons">
-                            <button class="action-btn action-btn-view" onclick="viewResource('${r.name}')">查看</button>
+                            <button class="action-btn action-btn-delete" onclick="deleteResource('${r.name}')">删除</button>
                             <button class="action-btn action-btn-edit" onclick="editResource('${r.name}')">编辑</button>
                         </div>
                     </td>
                 `;
 
                 const buildOrderRow = (order, isFirst) => {
-                    const paymentTag = order.paymentStatus ? `<span class="tag ${paymentTagMap[order.paymentStatus] || 'tag-secondary'}">${order.paymentStatus}</span>` : '-';
+                    const normalizedPaymentStatus = normalizePaymentStatus(order.paymentStatus);
+                    const paymentTag = normalizedPaymentStatus ? `<span class="tag ${paymentTagMap[normalizedPaymentStatus] || 'tag-secondary'}">${normalizedPaymentStatus}</span>` : '-';
                     const orderStatusTag = order.orderStatus ? `<span class="tag ${orderStatusTagMap[order.orderStatus] || 'tag-secondary'}">${order.orderStatus}</span>` : '-';
                     const orderTypeTag = order.orderType ? `<span class="tag ${orderTypeTagMap[order.orderType] || 'tag-secondary'}">${order.orderType}</span>` : '-';
                     const paidAmountText = order.paidAmount ? `¥${order.paidAmount.toLocaleString()}` : '-';
                     return `
                         <td style="padding: 12px; white-space: nowrap;">${order.paidCamp || '-'}</td>
-                        <td style="padding: 12px; white-space: nowrap;">${order.paidCampPeriod || '-'}</td>
+                        <td style="padding: 12px; white-space: nowrap;">${getOrderPaidCampPeriod(order) || '-'}</td>
                         <td style="padding: 12px; white-space: nowrap;">${paymentTag}</td>
                         <td style="padding: 12px; white-space: nowrap;">${paidAmountText}</td>
                         <td style="padding: 12px; white-space: nowrap;">${order.paidTime || '-'}</td>
@@ -5422,6 +5917,78 @@
             return phone.slice(0, 3) + '****' + phone.slice(-4);
         }
 
+        function normalizePaymentStatus(status) {
+            if (status === '已完成' || status === '支付完成') return '支付完成';
+            if (status === '已取消' || status === '退费') return '退费';
+            return status || '';
+        }
+
+        function getDefaultCampPeriod(camp) {
+            if (!camp) return '';
+            if (FILTER_INTERNATIONAL_CAMPS.includes(camp)) return camp;
+            const match = summerDomesticCampPeriods.find(item => item.camp === camp);
+            return match ? `${match.camp}${match.period}` : camp;
+        }
+
+        function getCampPeriodValues(camps, periods) {
+            const periodValues = Array.isArray(periods) ? periods.filter(Boolean) : (periods ? [periods] : []);
+            if (periodValues.length) return periodValues;
+
+            const campValues = Array.isArray(camps) ? camps.filter(Boolean) : (camps ? [camps] : []);
+            return campValues.map(getDefaultCampPeriod).filter(Boolean);
+        }
+
+        function getOrderPaidCampPeriod(order) {
+            return order.paidCampPeriod || getDefaultCampPeriod(order.paidCamp);
+        }
+
+        function getCustomerHistoryOrderCount(customer) {
+            return Number(customer.historyBuyInt || 0) + Number(customer.historyBuyDom || 0);
+        }
+
+        function getCustomerHistoryOrders(customer) {
+            const targetCount = getCustomerHistoryOrderCount(customer);
+            const baseOrders = (Array.isArray(customer.orders) && customer.orders.length > 0)
+                ? customer.orders
+                : (customer.paidCamp ? [{
+                    paidCamp: customer.paidCamp,
+                    paidCampPeriod: customer.paidCampPeriod,
+                    orderStatus: customer.orderStatus,
+                    orderType: customer.orderType,
+                    paymentStatus: customer.paymentStatus,
+                    paidAmount: customer.paidAmount,
+                    paidTime: customer.paidTime
+                }] : []);
+
+            if (targetCount <= 0 && baseOrders.length === 0) return [];
+
+            const rowCount = targetCount > 0 ? targetCount : baseOrders.length;
+            return Array.from({ length: rowCount }, (_, index) => {
+                const source = baseOrders[index] || baseOrders[index % baseOrders.length] || {};
+                const courseName = source.paidCamp || (Array.isArray(customer.camp) ? customer.camp[index % customer.camp.length] : customer.camp) || customer.paidCamp || '-';
+                const className = source.courseClassName || getOrderPaidCampPeriod(source) || customer.paidCampPeriod || getDefaultCampPeriod(courseName) || courseName;
+                const classId = source.courseClassId || `CB${String(860000 + customer.name.charCodeAt(0) * 10 + index + 1).slice(-6)}`;
+                const paidAmount = source.paidAmount ?? customer.paidAmount ?? 0;
+                const paidTime = source.paidTime || customer.paidTime || `2026-05-${String(18 + (index % 10)).padStart(2, '0')}`;
+
+                return {
+                    ...source,
+                    paidCamp: courseName,
+                    paidCampPeriod: className,
+                    courseClassId: classId,
+                    courseClassName: className,
+                    orderStatus: source.orderStatus || customer.orderStatus || '已完成',
+                    orderType: source.orderType || customer.orderType || '普通订单',
+                    paymentStatus: normalizePaymentStatus(source.paymentStatus || customer.paymentStatus || '支付完成'),
+                    paidAmount,
+                    paidTime,
+                    schoolId: source.schoolId || '1085',
+                    schoolName: source.schoolName || customer.campus || '成都嘉祥外国语学校',
+                    studentId: source.studentId || generateStudentId(mockData.resources.indexOf(customer))
+                };
+            });
+        }
+
         function viewCustomerOrders(name) {
             const customer = mockData.resources.find(r => r.name === name);
             if (!customer) {
@@ -5431,8 +5998,9 @@
 
             const body = document.getElementById('customer-orders-body');
             document.getElementById('customer-orders-title').textContent = `【${name}】历史订单`;
+            const historyOrders = getCustomerHistoryOrders(customer);
 
-            if (!customer.paidCamp) {
+            if (!historyOrders.length) {
                 body.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-secondary);">暂无已支付订单</div>`;
             } else {
                 const paymentStatusColor = {
@@ -5450,9 +6018,6 @@
                     '转入订单': 'tag-success',
                     '转出订单': 'tag-warning'
                 };
-                const psTag = paymentStatusColor[customer.paymentStatus] || 'tag-secondary';
-                const osTag = orderStatusColor[customer.orderStatus] || 'tag-secondary';
-                const otTag = orderTypeColor[customer.orderType] || 'tag-secondary';
 
                 body.innerHTML = `
                     <div class="table-container" style="overflow-x: auto; border-radius: 6px; border: 1px solid var(--border-color);">
@@ -5483,29 +6048,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.paidCamp || '-'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">-</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">-</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">-</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.name}${customer.isDuplicate ? ' <span class="badge">重复</span>' : ''}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.grade || '-'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.class || '-'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${osTag}">${customer.orderStatus || '-'}</span></td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${otTag}">${customer.orderType || '-'}</span></td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">否</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.paidAmount ? customer.paidAmount + '元' : '0元'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.paid ? customer.paidAmount + '元' : '0元'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${psTag}">${customer.paymentStatus || '-'}</span></td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.paidTime || '-'}</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">🔒</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">周二00:00:00-23:00:00</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">2026-07-07 10:10:00</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">2026-07-07 10:10:00</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">1085</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">成都嘉祥外国语学校</td>
-                                    <td style="padding: 12px; white-space: nowrap; font-size: 14px;">40999</td>
-                                </tr>
+                                ${historyOrders.map((order, index) => {
+                                    const psTag = paymentStatusColor[order.paymentStatus] || 'tag-secondary';
+                                    const osTag = orderStatusColor[order.orderStatus] || 'tag-secondary';
+                                    const otTag = orderTypeColor[order.orderType] || 'tag-secondary';
+                                    const createTime = order.createTime || `2026-07-${String(7 + index).padStart(2, '0')} 10:10:00`;
+                                    const confirmTime = order.confirmTime || `2026-07-${String(7 + index).padStart(2, '0')} 10:30:00`;
+
+                                    return `
+                                        <tr>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.paidCamp || '-'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.courseClassId}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.courseClassName}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">夏令营</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.name}${customer.isDuplicate ? ' <span class="badge">重复</span>' : ''}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.grade || '-'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${customer.class || '-'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${osTag}">${order.orderStatus || '-'}</span></td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${otTag}">${order.orderType || '-'}</span></td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">否</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.paidAmount ? order.paidAmount + '元' : '0元'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.paidAmount ? order.paidAmount + '元' : '0元'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;"><span class="tag ${psTag}">${order.paymentStatus || '-'}</span></td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.paidTime || '-'}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">🔒</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">周二00:00:00-23:00:00</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${createTime}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${confirmTime}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.schoolId}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.schoolName}</td>
+                                            <td style="padding: 12px; white-space: nowrap; font-size: 14px;">${order.studentId}</td>
+                                        </tr>
+                                    `;
+                                }).join('')}
                             </tbody>
                         </table>
                     </div>
@@ -5521,6 +6096,71 @@
 
         function viewResource(name) {
             alert(`查看 ${name} 的详细信息`);
+        }
+
+        function deleteResource(name) {
+            showAppAlert(`删除客户：${name}`);
+        }
+
+        function getCustomerHistoryRecords(customer) {
+            return customer.history || [
+                {
+                    date: customer.updateTime || '2026-07-08 15:00',
+                    image: customer.updater || '管理员',
+                    action: '更新客户',
+                    description: `${customer.name} 客户信息已更新`
+                },
+                {
+                    date: customer.createTime || '2026-07-04 10:30',
+                    image: customer.creator || '管理员',
+                    action: '创建客户',
+                    description: `${customer.name} 客户档案已创建`
+                }
+            ];
+        }
+
+        function showCustomerHistory(name) {
+            const customer = mockData.resources.find(r => r.name === name);
+            if (!customer) {
+                showAppAlert('未找到客户操作历史');
+                return;
+            }
+
+            const title = document.getElementById('customer-history-title');
+            const body = document.getElementById('customer-history-body');
+            const modal = document.getElementById('customer-history-modal');
+            const records = getCustomerHistoryRecords(customer);
+
+            title.textContent = `【${customer.name}】操作历史`;
+            body.innerHTML = `
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>形象</th>
+                                <th>操作</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${records.map(record => `
+                                <tr>
+                                    <td>${record.date}</td>
+                                    <td>${record.image}</td>
+                                    <td>${record.action}</td>
+                                    <td>${record.description}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            modal.classList.add('active');
+        }
+
+        function closeCustomerHistoryModal() {
+            document.getElementById('customer-history-modal').classList.remove('active');
         }
 
         function editResource(name) {
@@ -5576,7 +6216,7 @@
                 if (phone && !(r.phone || '').includes(phone)) return false;
                 if (campVals.length && !campVals.some(v => (r.camp || []).includes(v))) return false;
                 if (level && r.level !== level) return false;
-                if (campPeriodVals.length && !campPeriodVals.some(v => (r.campPeriod || []).includes(v))) return false;
+                if (campPeriodVals.length && !campPeriodVals.some(v => getCampPeriodValues(r.camp, r.campPeriod).includes(v))) return false;
                 if (resistanceVals.length && !resistanceVals.includes(r.resistance)) return false;
                 if (grade && r.grade !== grade) return false;
                 if (className && r.class !== className) return false;
@@ -5589,8 +6229,8 @@
                     paymentStatus: r.paymentStatus, paidAmount: r.paidAmount, paidTime: r.paidTime
                 }];
                 if (paidCamp && !orders.some(o => o.paidCamp === paidCamp)) return false;
-                if (paidCampPeriod && !orders.some(o => o.paidCampPeriod === paidCampPeriod)) return false;
-                if (paymentStatus && !orders.some(o => o.paymentStatus === paymentStatus)) return false;
+                if (paidCampPeriod && !orders.some(o => getOrderPaidCampPeriod(o) === paidCampPeriod)) return false;
+                if (paymentStatus && !orders.some(o => normalizePaymentStatus(o.paymentStatus) === paymentStatus)) return false;
                 if ((paidStart || paidEnd) && !orders.some(o => {
                     if (!o.paidTime) return false;
                     if (paidStart && o.paidTime < paidStart) return false;
@@ -5627,6 +6267,32 @@
 
         const FILTER_INTERNATIONAL_CAMPS = ['港澳-国际营7月4-9日', '欧洲-国际营7月20-31日', '英国-国际营7月11-22日', '马来西亚-国际营7月4-9日', '西班牙-国际营7月8-19日'];
 
+        function getCampPeriodOptionsByCamps(camps, includeAllWhenEmpty = true) {
+            const selectedCamps = Array.isArray(camps) ? camps.filter(Boolean) : [];
+            const internationalCamps = selectedCamps.filter(camp => FILTER_INTERNATIONAL_CAMPS.includes(camp));
+            const domesticCamps = selectedCamps.filter(camp => !FILTER_INTERNATIONAL_CAMPS.includes(camp));
+
+            if (!selectedCamps.length && includeAllWhenEmpty) {
+                return [
+                    ...FILTER_INTERNATIONAL_CAMPS.map(camp => ({ value: camp, text: camp })),
+                    ...summerDomesticCampPeriods.map(item => ({
+                        value: `${item.camp}${item.period}`,
+                        text: `${item.camp}${item.period}`
+                    }))
+                ];
+            }
+
+            return [
+                ...internationalCamps.map(camp => ({ value: camp, text: camp })),
+                ...summerDomesticCampPeriods
+                    .filter(item => domesticCamps.includes(item.camp))
+                    .map(item => ({
+                        value: `${item.camp}${item.period}`,
+                        text: `${item.camp}${item.period}`
+                    }))
+            ];
+        }
+
         function updateFilterCampOptions() {
             const type = document.getElementById('filter-type')?.value || '';
             const campSelect = document.getElementById('filter-camp');
@@ -5654,25 +6320,11 @@
             const periodSelect = document.getElementById('filter-camp-period');
             if (!periodSelect) return;
 
-            let options = [];
-            if (type === '国际' || !type) {
-                options = options.concat(FILTER_INTERNATIONAL_CAMPS.map(c => ({
-                    value: c,
-                    text: c
-                })));
-            }
-            if (type === '国内' || !type) {
-                const selectedCamps = getMultiSelectValues('filter-camp');
-                const selectedDomesticCamps = selectedCamps.filter(c => !FILTER_INTERNATIONAL_CAMPS.includes(c));
-                let domesticPeriods = summerDomesticCampPeriods;
-                if (selectedDomesticCamps.length > 0) {
-                    domesticPeriods = summerDomesticCampPeriods.filter(item => selectedDomesticCamps.includes(item.camp));
-                }
-                options = options.concat(domesticPeriods.map(item => ({
-                    value: `${item.camp}${item.period}`,
-                    text: `${item.camp}${item.period}`
-                })));
-            }
+            const selectedCamps = getMultiSelectValues('filter-camp');
+            let campsForPeriods = selectedCamps;
+            if (!selectedCamps.length && type === '国际') campsForPeriods = FILTER_INTERNATIONAL_CAMPS;
+            if (!selectedCamps.length && type === '国内') campsForPeriods = getUniqueDomesticCampOptions().map(option => option.value);
+            const options = getCampPeriodOptionsByCamps(campsForPeriods, !type && !selectedCamps.length);
 
             replaceSelectOptions(periodSelect, '请选择', options);
             makeSummerFieldMultiSelect(periodSelect, 6);
@@ -5775,23 +6427,7 @@
             const periodSelect = document.getElementById('filter-paid-camp-period');
             if (!periodSelect) return;
 
-            let options = [];
-            if (!paidCamp) {
-                options = options.concat(FILTER_INTERNATIONAL_CAMPS.map(c => ({ value: c, text: c })));
-                options = options.concat(summerDomesticCampPeriods.map(item => ({
-                    value: `${item.camp}${item.period}`,
-                    text: `${item.camp}${item.period}`
-                })));
-            } else if (FILTER_INTERNATIONAL_CAMPS.includes(paidCamp)) {
-                options.push({ value: paidCamp, text: paidCamp });
-            } else {
-                options = summerDomesticCampPeriods
-                    .filter(item => item.camp === paidCamp)
-                    .map(item => ({
-                        value: `${item.camp}${item.period}`,
-                        text: `${item.camp}${item.period}`
-                    }));
-            }
+            const options = getCampPeriodOptionsByCamps(paidCamp ? [paidCamp] : [], true);
 
             replaceSelectOptions(periodSelect, '请选择', options);
 
